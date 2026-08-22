@@ -178,9 +178,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\Lamin\Desktop\cpp-asset-tool\build\HelloWorld.vcxproj">
-      <Project>{24B9EEB7-8FF1-3C70-85A3-A11D64774E31}</Project>
-      <Name>HelloWorld</Name>
+    <ProjectReference Include="C:\Users\Lamin\Desktop\cpp-asset-tool\build\AssetLister.vcxproj">
+      <Project>{49219B22-D1E0-39DF-B827-9331F1060DF3}</Project>
+      <Name>AssetLister</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
