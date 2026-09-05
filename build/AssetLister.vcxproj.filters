@@ -4,6 +4,9 @@
     <ClCompile Include="C:\Users\Lamin\Desktop\cpp-asset-tool\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Lamin\Desktop\cpp-asset-tool\src\AssetScanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Lamin\Desktop\cpp-asset-tool\CMakeLists.txt" />
