@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "AssetLister.dir\\Debug\\AssetScanner.obj",
+            "outputs": [
+                "C:\\Users\\Lamin\\Desktop\\cpp-asset-tool\\build\\AssetLister.dir\\Debug\\vc143.pdb",
+                "AssetLister.dir\\Debug\\"
+            ],
+            "requires": []
+        }
+    ]
+}
