@@ -13,7 +13,10 @@ int Validator(){
 
     fs::directory_iterator dirIter(filePath);
     std::vector<Asset> assets;
+<<<<<<< HEAD
     std::vector<defective_assets> ill_assets;
+=======
+>>>>>>> ffc063cdaef3add9e3fd3dc4e415c60cdaec4e2c
 
     for (const auto& asset : dirIter) {
 
