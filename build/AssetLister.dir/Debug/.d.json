@@ -1,10 +1,9 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\lamin\\desktop\\cpp-asset-tool\\src\\validator.cpp",
+        "Source": "c:\\users\\lamin\\desktop\\asset_validator_tool\\src\\duplicatedetector.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "c:\\users\\lamin\\desktop\\cpp-asset-tool\\include\\validator.h",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\string",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\yvals_core.h",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\vcruntime.h",
@@ -160,10 +159,17 @@
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\ios",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\sstream",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\vector",
-            "c:\\users\\lamin\\desktop\\cpp-asset-tool\\include\\assetscanner.h",
+            "c:\\users\\lamin\\desktop\\asset_validator_tool\\include\\assetscanner.h",
+            "c:\\users\\lamin\\desktop\\asset_validator_tool\\build\\vcpkg_installed\\x64-windows\\include\\openssl\\sha.h",
+            "c:\\users\\lamin\\desktop\\asset_validator_tool\\build\\vcpkg_installed\\x64-windows\\include\\openssl\\macros.h",
+            "c:\\users\\lamin\\desktop\\asset_validator_tool\\build\\vcpkg_installed\\x64-windows\\include\\openssl\\opensslconf.h",
+            "c:\\users\\lamin\\desktop\\asset_validator_tool\\build\\vcpkg_installed\\x64-windows\\include\\openssl\\configuration.h",
+            "c:\\users\\lamin\\desktop\\asset_validator_tool\\build\\vcpkg_installed\\x64-windows\\include\\openssl\\opensslv.h",
+            "c:\\users\\lamin\\desktop\\asset_validator_tool\\build\\vcpkg_installed\\x64-windows\\include\\openssl\\e_os2.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\fstream",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\__msvc_filebuf.hpp",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\iostream",
-            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\ostream",
-            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\__msvc_filebuf.hpp"
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\ostream"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

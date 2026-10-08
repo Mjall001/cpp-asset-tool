@@ -5,7 +5,7 @@
         {
             "primary-output": "AssetLister.dir\\Debug\\AssetScanner.obj",
             "outputs": [
-                "C:\\Users\\Lamin\\Desktop\\cpp-asset-tool\\build\\AssetLister.dir\\Debug\\vc143.pdb",
+                "C:\\Users\\Lamin\\Desktop\\Asset_Validator_Tool\\build\\AssetLister.dir\\Debug\\vc143.pdb",
                 "AssetLister.dir\\Debug\\"
             ],
             "requires": []

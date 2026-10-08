@@ -9,9 +9,9 @@ namespace fs = std::filesystem;
 struct defective_assets{
     std::string format;
     std::string file_name;
-    std::string status;
-    std::uintmax_t size_bytes;
-    std::string reason;
+    std::uintmax_t size_bytes{0};
+    std::string status{"UNVALIDATED"};
+    std::string reason{"Valid file"};
     
     //bool is_meta = false; //for unity assets
 };

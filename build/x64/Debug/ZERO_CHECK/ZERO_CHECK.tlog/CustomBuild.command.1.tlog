@@ -1,6 +1,6 @@
-^C:\USERS\LAMIN\DESKTOP\CPP-ASSET-TOOL\BUILD\CMAKEFILES\72DAFA41538845D59B00BF6EB049E07A\GENERATE.STAMP.RULE
+^C:\USERS\LAMIN\DESKTOP\ASSET_VALIDATOR_TOOL\BUILD\CMAKEFILES\E43922BFBFEFB0ECC0FF7CA4769465F2\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Lamin/Desktop/cpp-asset-tool -BC:/Users/Lamin/Desktop/cpp-asset-tool/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Lamin/Desktop/cpp-asset-tool/build/cpp-asset-tool.sln
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Lamin/Desktop/Asset_Validator_Tool -BC:/Users/Lamin/Desktop/Asset_Validator_Tool/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Lamin/Desktop/Asset_Validator_Tool/build/Asset_Validator_Tool.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
