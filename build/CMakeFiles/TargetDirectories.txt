@@ -1,3 +1,0 @@
-C:/Users/Lamin/Desktop/Asset_Validator_Tool/build/CMakeFiles/AssetLister.dir
-C:/Users/Lamin/Desktop/Asset_Validator_Tool/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Lamin/Desktop/Asset_Validator_Tool/build/CMakeFiles/ZERO_CHECK.dir
