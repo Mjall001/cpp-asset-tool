@@ -1,5 +1,5 @@
 #Minimum version of the Cmake version supported
-cmake_minimum_required(VERSION 4.4.4)
+cmake_minimum_required(VERSION 4.4.2)
 
 #
 #
