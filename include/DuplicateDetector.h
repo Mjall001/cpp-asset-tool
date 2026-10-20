@@ -7,9 +7,12 @@
 #include "AssetScanner.h"
 #include <openssl/sha.h>
 #include <iomanip>
+#include <unordered_map>
 
-std::vector<std::vector<Asset>> findDuplicates(const std::vector<Asset>& assets);
+namespace fs = std::filesystem;
 
-int DuplicateDetector();
+// std::vector<std::vector<Asset>> findDuplicates(const std::vector<Asset>& assets);
+std::string hashFile(fs::path file);
+std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector();
 
-//signature function
+// signature function
