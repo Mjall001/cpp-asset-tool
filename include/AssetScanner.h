@@ -6,12 +6,12 @@
 
 namespace fs = std::filesystem;
 
-struct Asset{
+struct Asset
+{
 
     std::string name;
     std::string extension;
     std::uintmax_t size;
-
 };
 
-int AssetScanner();
+int AssetScanner(fs::path filePath);

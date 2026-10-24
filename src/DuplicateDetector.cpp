@@ -15,11 +15,11 @@
 #include <sstream>
 #include <unordered_map>
 
-std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector()
+std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector(fs::path filePath)
 {
     std::cout << "working" << ": " << std::endl;
 
-    fs::path filePath = "tests/TestAssets"; // path not found
+    // fs::path filePath = "tests/TestAssets";
     std::cout << std::filesystem::absolute(filePath) << '\n';
     // fs::path testFile = "tests/TestAssets/Skin_Texture_Graph_Base_Colour.png";
     fs::directory_iterator dirIter(filePath);

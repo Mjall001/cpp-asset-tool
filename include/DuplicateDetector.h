@@ -13,6 +13,6 @@ namespace fs = std::filesystem;
 
 // std::vector<std::vector<Asset>> findDuplicates(const std::vector<Asset>& assets);
 std::string hashFile(fs::path file);
-std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector();
+std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector(fs::path filePath);
 
 // signature function
