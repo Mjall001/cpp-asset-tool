@@ -6,7 +6,7 @@
 
 namespace fs = std::filesystem;
 
-struct defective_assets
+struct validated_assets
 {
     std::string format;
     std::string file_name;

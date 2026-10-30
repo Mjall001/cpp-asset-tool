@@ -16,7 +16,7 @@ find_package(OpenSSL REQUIRED)
 
 #Specify the source code files to current project
 add_executable(AssetLister src/main.cpp src/AssetScanner.cpp src/Validator.cpp src/DuplicateDetector.cpp)
-
+add_executable(GenerateTests tests/GenerateAssets.cpp)
 file(GLOB_RECURSE AssetLister_SOURCES CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"

@@ -18,24 +18,38 @@
 std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector(fs::path filePath)
 {
     std::cout << "working" << ": " << std::endl;
+    auto file_counter = 0;
 
-    // fs::path filePath = "tests/TestAssets";
     std::cout << std::filesystem::absolute(filePath) << '\n';
-    // fs::path testFile = "tests/TestAssets/Skin_Texture_Graph_Base_Colour.png";
+
     fs::directory_iterator dirIter(filePath);
     std::vector<Asset> assets;
-
+    std::unordered_map<std::uintmax_t, std::vector<fs::path>> same_size_assets; // filesize and
     std::unordered_map<std::string, std::string> hashed_files;                  // filename,hash
     std::unordered_map<std::string, std::vector<std::string>> file_hash_groups; // hash,filename
     std::unordered_map<std::string, std::vector<std::string>> duplicate_files;
 
     for (const auto &asset : dirIter)
     {
-        std::string currentName = asset.path().filename().stem().string();
-        std::string currentHash = hashFile(asset.path());
-        // std::cout << currentName << std::endl;
-        // std::cout << currentHash << std::endl;
-        hashed_files.emplace(currentName, currentHash);
+        auto size = fs::file_size(asset.path());
+        same_size_assets[size].push_back(asset.path());
+    }
+
+    for (const auto &[size, paths] : same_size_assets)
+    {
+        if (paths.size() < 2)
+        {
+            continue;
+        }
+        for (const auto &path : paths)
+        {
+            std::string currentName = path.filename().stem().string();
+            std::string currentHash = hashFile(path);
+            // std::cout << currentName << std::endl;
+            // std::cout << currentHash << std::endl;
+            hashed_files.emplace(currentName, currentHash);
+            file_counter += 1;
+        }
     }
     for (auto i : hashed_files)
     {
@@ -59,11 +73,9 @@ std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector(fs::
         }
     }
 
+    std::cout << "All hash_files: " << hashed_files.size() << std::endl;
     return duplicate_files;
 }
-
-// refactor to place hashing function here
-// e.g hashFile(file)
 
 std::string hashFile(fs::path file)
 {
@@ -108,5 +120,6 @@ std::string hashFile(fs::path file)
     std::string hashString = hashStream.str();
     // std::cout << hashString << " " << hashString.size() << '\n';
     EVP_MD_CTX_free(mdctx);
+
     return hashString;
 }

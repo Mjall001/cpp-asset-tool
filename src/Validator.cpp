@@ -18,8 +18,6 @@ const auto &meta_files = {"json", "meta"};
 
 int Validator(fs::path filePath)
 {
-    // std:: string sha_test = "Testing this string";
-    // std:: string hashed_sha_test = SHA224(sha_test) ;
 
     // fs::path filePath = "tests/TestAssets";
 
@@ -28,8 +26,9 @@ int Validator(fs::path filePath)
 
     fs::directory_iterator dirIter(filePath);
     std::vector<Asset> assets;
-    std::vector<defective_assets> ill_assets;
-    std::array<std::string, 1> valid_formats{{".png"}};
+    std::vector<validated_assets> bad_assets;
+    std::array<std::string, 1> valid_formats{{".txt"}};
+    auto valid_count = 0;
 
     std::vector<std::string> errors;
 
@@ -55,17 +54,17 @@ int Validator(fs::path filePath)
         std::uintmax_t size_bytes = a.size;
         // std:: cout <<"\nsize: "<< size_bytes <<" bytes"<<std::endl;
 
-        ill_assets.emplace_back(format, file_name, size_bytes);
+        bad_assets.emplace_back(format, file_name, size_bytes);
 
     }; // populate bad_assets Vector
 
-    std::cout << "\nvalidator is running " << std::endl;
-    for (auto &a : ill_assets)
+    // std::cout << "\nvalidator is running " << std::endl;
+    for (auto &a : bad_assets)
     {
 
         if (!isValidFilenameRegex(a.file_name))
         {
-            std::cout << a.file_name << std::endl;
+            // std::cout << a.file_name << std::endl;
             const std::string status_w = "WARNING";
             a.status = status_w;
             a.reason = "| THIS FILE NAME IS INVALID |";
@@ -97,32 +96,24 @@ int Validator(fs::path filePath)
         if (a.reason == "Valid file")
         {
             a.status = "VALIDATED";
+            valid_count += 1;
         }
-        std::cout << "\nname " << a.file_name << std::endl;
-        std::cout << "\nstatus " << a.status << std::endl;
-        std::cout << "\nsize: " << a.size_bytes << " bytes" << std::endl;
-        std::cout << "\nformat: " << a.format << std::endl;
-        // std:: cout <<"\nReason: "<< a.reason <<std::endl;
+        // std::cout << "\nname " << a.file_name << std::endl;
+        // std::cout << "\nstatus " << a.status << std::endl;
+        // std::cout << "\nsize: " << a.size_bytes << " bytes" << std::endl;
+        // std::cout << "\nformat: " << a.format << std::endl;
+        //  std:: cout <<"\nReason: "<< a.reason <<std::endl;
         for (const auto &err : errors)
         {
-            std::cout << "\nReason: " << err << std::endl;
+            // std::cout << "\nReason: " << err << std::endl;
         }
 
         errors.clear();
     }
-
-    // std::cout << ill_assets.size() << std::endl;
-
-    // std::cout << ill_assets.size() << std::endl;
-
-    // Target Directory,
-    // Print failed assets name, reason it failed and file path
-    // summary of passed, failed and errors
-    // in the end RESULT: Validation FAILED (Exit Code 1)
-
-    // now: Make a conditional loop and also append status and Reasons to each assets that meets the commitments
-
-    //
+    std::cout << "Summary of assets: " << assets.size() << "\n";
+    std::cout << "Validated assets: " << valid_count << "\n";
+    std::cout << "Invalid assets: " << assets.size() - valid_count << "\n";
+    // todo: counts for each reason
 
     return 0;
 }

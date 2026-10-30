@@ -3,21 +3,72 @@
 #include "DuplicateDetector.h"
 #include <iostream>
 #include <filesystem>
-
+#include <chrono>
+std::string helpMenu()
+{
+    std::cout << "To scan files: scan asset\\path" << std::endl;
+    std::cout << "To validate files: validate asset\\path" << std::endl;
+    std::cout << "To check for duplicates: find_duplicates asset\\path" << std::endl;
+    std::cout << "For a full analysis report: full_analysis asset\\path" << std::endl;
+    return 0;
+}
 int main(int argc, char *argv[])
 {
-    if (std::string(argv[1]) == "validate")
+    if (argc != 3)
     {
-        Validator(std::string(argv[2])); // works
-    }
 
-    if (std::string(argv[1]) == "scan")
-    {
-        AssetScanner(std::string(argv[2]));
+        std::cout << "Invalid Argument Count" << std::endl;
+        helpMenu();
+        return 1;
     }
-    if (std::string(argv[1]) == "find_duplicates")
+    auto command = std::string(argv[1]);
+    auto filePath = std::string(argv[2]);
+    if (!fs::exists(filePath))
     {
-        DuplicateDetector(std::string(argv[2]));
+        std::cout << "Invalid file path" << std::endl;
+        return 1;
+    };
+
+    if (command == "validate")
+    {
+        auto start = std::chrono::steady_clock::now();
+        AssetScanner(filePath);
+        auto end = std::chrono::steady_clock::now();
+        Validator(filePath); // works
+        std::chrono::duration<double> time_elapsed = end - start;
+        std::cout << "time elapsed: " << time_elapsed.count() << std::endl;
+        return 0;
+    }
+    else if (command == "scan")
+    {
+        auto start = std::chrono::steady_clock::now();
+        AssetScanner(filePath);
+        auto end = std::chrono::steady_clock::now();
+        std::chrono::duration<double> time_elapsed = end - start;
+        std::cout << "time elapsed: " << time_elapsed.count() << std::endl;
+    }
+    else if (command == "find_duplicates")
+    {
+        auto start = std::chrono::steady_clock::now();
+        DuplicateDetector(filePath);
+        auto end = std::chrono::steady_clock::now();
+        std::chrono::duration<double> time_elapsed = end - start;
+        std::cout << "time elapsed: " << time_elapsed.count() << std::endl;
+    }
+    else if (command == "full_analysis")
+    {
+        auto start = std::chrono::steady_clock::now();
+        AssetScanner(filePath);
+        Validator(filePath);
+        DuplicateDetector(filePath);
+        auto end = std::chrono::steady_clock::now();
+        std::chrono::duration<double> time_elapsed = end - start;
+        std::cout << "time elapsed: " << time_elapsed.count() << std::endl;
+    }
+    else
+    {
+        helpMenu();
+        return 1;
     }
 
     for (int i = 0; i < argc; i++)
@@ -25,26 +76,5 @@ int main(int argc, char *argv[])
         std::cout << "argc[" << i << "] = ";
         std::cout << argv[i] << std::endl;
     }
-
-    // AssetScanner();
-    // Validator();
-    // DuplicateDetector();
-    /*    auto duplicates = DuplicateDetector();
-       for (const auto &group : duplicates)
-       {
-           std::cout << "Number of copies: " << group.second.size() << '\n';
-
-           for (const auto &filename : group.second)
-           {
-               std::cout << filename << '\n';
-           }
-       } */
     return 0;
 }
-
-// save outputs using Asset struct
-
-// seperate AssetScanner out of Main
-
-// if it's an odd number of characters make sure it's even
-//
