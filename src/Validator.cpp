@@ -27,7 +27,7 @@ int Validator(fs::path filePath)
     fs::directory_iterator dirIter(filePath);
     std::vector<Asset> assets;
     std::vector<validated_assets> bad_assets;
-    std::array<std::string, 1> valid_formats{{".txt"}};
+    std::array<std::string, 4> valid_formats{{".txt", ".fbx", ".png", ".jpeg"}};
     auto valid_count = 0;
 
     std::vector<std::string> errors;
