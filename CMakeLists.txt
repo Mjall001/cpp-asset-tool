@@ -1,5 +1,5 @@
 #Minimum version of the Cmake version supported
-cmake_minimum_required(VERSION 4.4.2)
+cmake_minimum_required(VERSION 3.21)
 
 #
 #
@@ -25,11 +25,8 @@ file(GLOB_RECURSE AssetLister_SOURCES CONFIGURE_DEPENDS
 
 target_sources(AssetLister PRIVATE ${AssetLister_SOURCES})
 
-
-
 find_package(OpenSSL REQUIRED)
-find_package(glew REQUIRED)
-target_link_libraries(AssetLister PRIVATE OpenSSL::SSL OpenSSL::Crypto GLEW::GLEW)
+target_link_libraries(AssetLister PRIVATE OpenSSL::SSL OpenSSL::Crypto )
 
 target_include_directories(AssetLister PUBLIC include)
 
