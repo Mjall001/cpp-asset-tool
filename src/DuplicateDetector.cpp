@@ -72,9 +72,11 @@ std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector(fs::
             duplicate_files.emplace(i);
         }
     }
-    for (const auto &i : duplicate_files)
+    for (const auto &[hash, names] : duplicate_files)
     {
-        std::cout << "Duplicates: " << i.first << " Amount: " << i.second.size() << std::endl;
+        std::cout << "Duplicates group (" << names.size() << " files):\n";
+        for (const auto &n : names)
+            std::cout << " " << n << "\n";
     }
     if (duplicate_files.size() == 0)
     {

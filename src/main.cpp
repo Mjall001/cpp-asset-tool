@@ -4,13 +4,12 @@
 #include <iostream>
 #include <filesystem>
 #include <chrono>
-std::string helpMenu()
+void helpMenu()
 {
     std::cout << "To scan files: scan asset\\path" << std::endl;
     std::cout << "To validate files: validate asset\\path" << std::endl;
     std::cout << "To check for duplicates: find_duplicates asset\\path" << std::endl;
     std::cout << "For a full analysis report: full_analysis asset\\path" << std::endl;
-    return 0;
 }
 int main(int argc, char *argv[])
 {
