@@ -43,7 +43,7 @@ std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector(fs::
         }
         for (const auto &path : paths)
         {
-            std::string currentName = path.filename().stem().string();
+            std::string currentName = path.string();
             std::string currentHash = hashFile(path);
             // std::cout << currentName << std::endl;
             // std::cout << currentHash << std::endl;
