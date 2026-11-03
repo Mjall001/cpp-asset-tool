@@ -34,6 +34,10 @@ int Validator(fs::path filePath)
 
     for (const auto &asset : dirIter)
     {
+        if (!fs::is_regular_file(asset.path()))
+        {
+            continue;
+        }
 
         std::string currentName = asset.path().filename().stem().string();
         std::string currentExt = asset.path().extension().stem().string();
