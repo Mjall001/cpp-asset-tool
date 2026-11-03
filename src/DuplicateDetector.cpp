@@ -1,4 +1,3 @@
-#pragma once
 #include <array>
 #include <string>
 #include <filesystem>
@@ -17,13 +16,10 @@
 
 std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector(fs::path filePath)
 {
-    std::cout << "working" << ": " << std::endl;
-    auto file_counter = 0;
 
     std::cout << std::filesystem::absolute(filePath) << '\n';
 
     fs::directory_iterator dirIter(filePath);
-    std::vector<Asset> assets;
     std::unordered_map<std::uintmax_t, std::vector<fs::path>> same_size_assets; // filesize and
     std::unordered_map<std::string, std::string> hashed_files;                  // filename,hash
     std::unordered_map<std::string, std::vector<std::string>> file_hash_groups; // hash,filename
@@ -57,7 +53,6 @@ std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector(fs::
             // std::cout << currentName << std::endl;
             // std::cout << currentHash << std::endl;
             hashed_files.emplace(currentName, currentHash);
-            file_counter += 1;
         }
     }
     for (auto i : hashed_files)
