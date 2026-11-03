@@ -107,17 +107,21 @@ int Validator(fs::path filePath)
         // std::cout << "\nsize: " << a.size_bytes << " bytes" << std::endl;
         // std::cout << "\nformat: " << a.format << std::endl;
         //  std:: cout <<"\nReason: "<< a.reason <<std::endl;
-        for (const auto &err : errors)
-        {
-            // std::cout << "\nReason: " << err << std::endl;
-        }
 
         errors.clear();
     }
     std::cout << "Summary of assets: " << assets.size() << "\n";
     std::cout << "Validated assets: " << valid_count << "\n";
     std::cout << "Invalid assets: " << assets.size() - valid_count << "\n";
-    // todo: counts for each reason
+    for (auto &a : bad_assets)
+    {
+        if (a.status == "VALIDATED")
+        {
+            continue;
+        }
+
+        std::cout << "Name: " << a.file_name << a.format << ": " << a.reason << "\n";
+    }
 
     return 0;
 }

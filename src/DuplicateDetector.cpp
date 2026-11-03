@@ -49,6 +49,11 @@ std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector(fs::
         {
             std::string currentName = path.string();
             std::string currentHash = hashFile(path);
+            if (currentHash.empty())
+            {
+                std::cerr << "Could not hash: " << path << "\n";
+                continue;
+            }
             // std::cout << currentName << std::endl;
             // std::cout << currentHash << std::endl;
             hashed_files.emplace(currentName, currentHash);
@@ -102,13 +107,13 @@ std::string hashFile(fs::path file)
 
     if (!fileStream.is_open())
     {
-        return "unopened file";
+        return "";
     }
 
     mdctx = EVP_MD_CTX_new();
     if (mdctx == NULL)
     {
-        return "no new context";
+        return "";
     }
 
     EVP_DigestInit_ex2(mdctx, md, NULL);
