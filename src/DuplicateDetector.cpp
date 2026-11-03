@@ -31,6 +31,10 @@ std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector(fs::
 
     for (const auto &asset : dirIter)
     {
+        if (!fs::is_regular_file(asset.path()))
+        {
+            continue;
+        }
         auto size = fs::file_size(asset.path());
         same_size_assets[size].push_back(asset.path());
     }

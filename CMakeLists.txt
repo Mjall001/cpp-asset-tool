@@ -39,7 +39,7 @@ if(MSVC)
     )
 else()
     target_compile_options(AssetLister PRIVATE
-        -WALL
+        -Wall
         -Wextra
         -Wpedantic
     )
