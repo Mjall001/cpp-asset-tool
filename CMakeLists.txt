@@ -25,7 +25,7 @@ file(GLOB_RECURSE AssetLister_SOURCES CONFIGURE_DEPENDS
 
 target_sources(AssetLister PRIVATE ${AssetLister_SOURCES})
 
-find_package(OpenSSL REQUIRED)
+
 target_link_libraries(AssetLister PRIVATE OpenSSL::SSL OpenSSL::Crypto )
 
 target_include_directories(AssetLister PUBLIC include)
@@ -35,7 +35,6 @@ if(MSVC)
         /W3
         /MP
         /WX
-        /ZI
     )
 else()
     target_compile_options(AssetLister PRIVATE

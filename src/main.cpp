@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     if (command == "validate")
     {
         auto start = std::chrono::steady_clock::now();
-        Validator(filePath); // works
+        Validator(filePath);
         auto end = std::chrono::steady_clock::now();
         std::chrono::duration<double> time_elapsed = end - start;
         std::cout << "time elapsed: " << time_elapsed.count() << std::endl;

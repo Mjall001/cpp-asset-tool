@@ -5,16 +5,15 @@
 #include <string>
 #include <regex>
 #include <array>
-#include <openssl/sha.h>
 
 bool isValidFilenameRegex(const std::string &filename)
 {
     static const std::regex pattern("^[a-zA-Z0-9_]+$");
     return std::regex_match(filename, pattern);
 }
-const auto &MAX_ASSET_SIZE_BYTES = 16 * 1024 * 1024; // 16 MB
+constexpr std::uintmax_t MAX_ASSET_SIZE_BYTES = 16 * 1024 * 1024; // 16 MB
 
-const auto &meta_files = {"json", "meta"};
+// const auto &meta_files = {"json", "meta"};
 
 int Validator(fs::path filePath)
 {
@@ -29,8 +28,6 @@ int Validator(fs::path filePath)
     std::vector<validated_assets> bad_assets;
     std::array<std::string, 4> valid_formats{{".txt", ".fbx", ".png", ".jpeg"}};
     auto valid_count = 0;
-
-    std::vector<std::string> errors;
 
     for (const auto &asset : dirIter)
     {
@@ -72,7 +69,6 @@ int Validator(fs::path filePath)
             const std::string status_w = "WARNING";
             a.status = status_w;
             a.reason = "| THIS FILE NAME IS INVALID |";
-            errors.emplace_back(a.reason);
         }
         if (std::find(valid_formats.begin(), valid_formats.end(), a.format) == valid_formats.end())
         {
@@ -80,7 +76,6 @@ int Validator(fs::path filePath)
             const std::string status_w = "WARNING";
             a.status = status_w;
             a.reason = "| THIS FILE IS AN INVALID FORMAT |";
-            errors.emplace_back(a.reason);
         }
         // missing metadata
         if (a.size_bytes > MAX_ASSET_SIZE_BYTES)
@@ -88,7 +83,6 @@ int Validator(fs::path filePath)
             const std::string status_w = "WARNING2";
             a.status = status_w;
             a.reason = "| THIS FILE IS OVERSIZED |";
-            errors.emplace_back(a.reason);
         }
         /*  if (std:: find(meta_files.begin(), meta_files.end(), a.file_name + ".meta") == meta_files.end()){
 
@@ -107,8 +101,6 @@ int Validator(fs::path filePath)
         // std::cout << "\nsize: " << a.size_bytes << " bytes" << std::endl;
         // std::cout << "\nformat: " << a.format << std::endl;
         //  std:: cout <<"\nReason: "<< a.reason <<std::endl;
-
-        errors.clear();
     }
     std::cout << "Summary of assets: " << assets.size() << "\n";
     std::cout << "Validated assets: " << valid_count << "\n";
