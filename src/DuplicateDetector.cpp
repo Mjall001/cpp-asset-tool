@@ -37,10 +37,10 @@ std::unordered_map<std::string, std::vector<std::string>> DuplicateDetector(fs::
 
     for (const auto &[size, paths] : same_size_assets)
     {
-        if (paths.size() < 2)
-        {
-            continue;
-        }
+        /*         if (paths.size() < 2)
+                {
+                    continue;
+                } */
         for (const auto &path : paths)
         {
             std::string currentName = path.string();

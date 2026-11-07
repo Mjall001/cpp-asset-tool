@@ -80,7 +80,7 @@ int Validator(fs::path filePath)
         // missing metadata
         if (a.size_bytes > MAX_ASSET_SIZE_BYTES)
         {
-            const std::string status_w = "WARNING2";
+            const std::string status_w = "WARNING";
             a.status = status_w;
             a.reason = "| THIS FILE IS OVERSIZED |";
         }
